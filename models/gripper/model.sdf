@@ -1,90 +1,218 @@
 <?xml version="1.0"?>
 <sdf version="1.6">
   <model name="simple_gripper">
-    <static>false</static>
+    <static>true</static>
 
-    <!-- Base del gripper -->
-    <link name="base_link">
-      <pose>0 0 0 0 0 0</pose>
-      <collision name="base_collision">
+    <link name="riser">
+      <pose>-0.15 0.0 0.5 0 0 0</pose>
+      <inertial>
+        <pose>0 0 -0.5 0 0 0</pose>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+        <mass>10.0</mass>
+      </inertial>
+      <collision name="collision">
         <geometry>
           <box>
-            <size>0.1 0.1 0.02</size>
+            <size>0.2 0.2 1.0</size>
           </box>
         </geometry>
       </collision>
-      <visual name="base_visual">
+      <visual name="visual">
         <geometry>
           <box>
-            <size>0.1 0.1 0.02</size>
+            <size>0.2 0.2 1.0</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Purple</name>
+          </script>
+        </material>
       </visual>
     </link>
 
-    <!-- Dedo izquierdo -->
+    <link name="palm">
+      <pose>0.0 0.0 0.05 0 0 0</pose>
+      <inertial>
+        <mass>0.5</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.2 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.2 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Red</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
     <link name="left_finger">
-      <pose>-0.03 0 0.04 0 0 0</pose>
-      <collision name="left_collision">
+      <pose>0.1 0.2 0.05 0 0 -0.78539</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
         <geometry>
           <box>
-            <size>0.02 0.02 0.08</size>
+            <size>0.1 0.3 0.1</size>
           </box>
         </geometry>
       </collision>
-      <visual name="left_visual">
+      <visual name="visual">
         <geometry>
           <box>
-            <size>0.02 0.02 0.08</size>
+            <size>0.1 0.3 0.1</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
       </visual>
     </link>
 
-    <!-- Dedo derecho -->
+    <link name="left_finger_tip">
+      <pose>0.336 0.3 0.05 0 0 1.5707</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.2 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.2 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+
     <link name="right_finger">
-      <pose>0.03 0 0.04 0 0 0</pose>
-      <collision name="right_collision">
+      <pose>0.1 -0.2 0.05 0 0 0.78539</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
         <geometry>
           <box>
-            <size>0.02 0.02 0.08</size>
+            <size>0.1 0.3 0.1</size>
           </box>
         </geometry>
       </collision>
-      <visual name="right_visual">
+      <visual name="visual">
         <geometry>
           <box>
-            <size>0.02 0.02 0.08</size>
+            <size>0.1 0.3 0.1</size>
           </box>
         </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
       </visual>
     </link>
 
-    <!-- Articulación dedo izquierdo -->
-    <joint name="left_joint" type="prismatic">
-      <parent>base_link</parent>
-      <child>left_finger</child>
-      <axis>
-        <xyz>1 0 0</xyz>
-        <limit>
-          <lower>-0.02</lower>
-          <upper>0.0</upper>
-        </limit>
-      </axis>
-    </joint>
-
-    <!-- Articulación dedo derecho -->
-    <joint name="right_joint" type="prismatic">
-      <parent>base_link</parent>
-      <child>right_finger</child>
-      <axis>
-        <xyz>-1 0 0</xyz>
-        <limit>
-          <lower>-0.02</lower>
-          <upper>0.0</upper>
-        </limit>
-      </axis>
-    </joint>
+    <link name="right_finger_tip">
+      <pose>0.336 -0.3 0.05 0 0 1.5707</pose>
+      <inertial>
+        <mass>0.1</mass>
+        <inertia>
+          <ixx>0.01</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.01</iyy>
+          <iyz>0</iyz>
+          <izz>0.01</izz>
+        </inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry>
+          <box>
+            <size>0.1 0.2 0.1</size>
+          </box>
+        </geometry>
+      </collision>
+      <visual name="visual">
+        <geometry>
+          <box>
+            <size>0.1 0.2 0.1</size>
+          </box>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Green</name>
+          </script>
+        </material>
+      </visual>
+    </link>
 
   </model>
 </sdf>
